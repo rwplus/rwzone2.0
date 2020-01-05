@@ -1,60 +1,30 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+   <app-layout v-if="$store.state.auth.isLogged" />
+        <router-view />
+    <v-snackbar
+        :value="$store.state.snackbar.snackbar.show"
+        :multi-line="$store.state.snackbar.snackbar.multiLine"
+        :top="$store.state.snackbar.snackbar.top === 'top' "
+        :bottom="$store.state.snackbar.snackbar.bottom === 'bottom' "
+        :color="$store.state.snackbar.snackbar.color"
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-content>
-      <HelloWorld/>
-    </v-content>
+        {{$store.state.snackbar.snackbar.message}}
+      <v-btn dark text @click="$store.commit('snackbar/setSnackbarShow',false)" color="red">close</v-btn>
+ </v-snackbar>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import AppLayout from '@/components/core/Layout'
 
 export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
+  name: "App",
+  components:{
+    AppLayout
   },
-
   data: () => ({
     //
-  }),
+  })
 };
 </script>
