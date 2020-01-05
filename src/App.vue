@@ -1,7 +1,11 @@
 <template>
   <v-app>
    <app-layout v-if="$store.state.auth.isLogged" />
+   <v-content>
+    <v-container grid-list-xs>
         <router-view />
+    </v-container>
+    </v-content>
     <v-snackbar
         :value="$store.state.snackbar.snackbar.show"
         :multi-line="$store.state.snackbar.snackbar.multiLine"

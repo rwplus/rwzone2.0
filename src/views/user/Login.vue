@@ -1,5 +1,5 @@
 <template>
-    <v-row no-gutters>
+ <v-row no-gutters>
       <v-col cols="6" >
         <v-card height="100%" width="100%" tile color="#000000" >
           <div class="rw-container">
@@ -25,7 +25,7 @@
   </v-row>
           </v-card>
       </v-col>
-<v-col cols="6">
+<v-col cols="6" >
              <v-card tile  height="100%" width="100%" no-gutters>
                     <v-container
         class="fill-height"
@@ -86,7 +86,7 @@
 </v-container>
   </v-card>
 
-          </v-col>
+  </v-col>
     </v-row>
 </template>
 
@@ -114,7 +114,7 @@ export default {
             window.localStorage.setItem("token", response.data.token);
             window.localStorage.setItem("user", JSON.stringify(response.data));
             // this.$store.commit("auth/SET_USER", response.data);
-            this.$store.commit("auth/SET_USER", this.userName);
+            this.$store.commit("auth/SET_USER", response.data);
             this.$store.commit("auth/SET_LOGGED", true);
           }else{
             console.log("无法查询到用户")
