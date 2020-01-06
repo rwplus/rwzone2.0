@@ -8,6 +8,20 @@
       fixed
       floating
     >
+    <v-list nav
+          class="py-0">
+      <v-list-item two-line>
+            <v-list-item-avatar color="red" small>
+<span class="white--text headline">WK</span>
+            </v-list-item-avatar>
+
+            <v-list-item-content>
+              <v-list-item-title>weeknd</v-list-item-title>
+              <v-list-item-subtitle>weeknd.su@hotmail.com</v-list-item-subtitle>
+            </v-list-item-content>
+      </v-list-item>
+      <v-divider></v-divider>
+      </v-list>
    <v-list shaped>
       <v-list-item-group v-model="item" color="black">
         <v-list-item
@@ -15,7 +29,7 @@
           :key="i"
         >
           <v-list-item-icon>
-            <v-icon v-text="item.icon" small></v-icon>
+            <v-icon v-text="item.icon" size="24"></v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title v-text="item.text" class="caption"></v-list-item-title>
@@ -24,41 +38,6 @@
       </v-list-item-group>
     </v-list>
     </v-navigation-drawer>
-
-    <v-app-bar
-     app
-     clipped-left
-     color="#212121"
-     dark
-     dense
-
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-       <v-toolbar-title class="font-weight-bold">
-        <span class="error--text">RW</span>
-        <span class="orange--text">Zone .</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-       <v-text-field
-        dense
-        rounded
-        solo
-        hide-details
-        color="grey"
-        prepend-inner-icon="search"
-      ></v-text-field>
-      <v-spacer></v-spacer>
-      <v-btn icon tile><v-icon small>mdi-settings</v-icon></v-btn>
-
-      <v-btn icon tile><v-icon small>mdi-mail</v-icon></v-btn>
-      <v-btn icon tile><v-icon small>mdi-calendar</v-icon></v-btn>
-      <v-avatar color="red" size="36">
-      <span class="white--text caption">WK</span>
-        </v-avatar>
-    </v-app-bar>
-  </div>
-</template>
-    </v-app-bar>
 </div>
 </template>
 
@@ -69,11 +48,14 @@
     },
     data: () => ({
       drawer: null,
-      item: 1,
+      item: 0,
       items: [
-        { text: 'Real-Time', icon: 'mdi-clock' },
-        { text: 'Audience', icon: 'mdi-account' },
-        { text: 'Conversions', icon: 'mdi-flag' },
+        { text: '任务', icon: 'mdi-clock' },
+        { text: '信息', icon: 'mdi-account' },
+        { text: '标记', icon: 'mdi-flag' },
+        { text: '日志', icon: 'mdi-math-log' },
+        { text: '表格', icon: 'mdi-table-edit' },
+        { text: '标记', icon: 'mdi-flag' },
       ],
     }),
   }
