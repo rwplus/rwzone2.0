@@ -5,57 +5,56 @@
       app
       expand-on-hover
       clipped
+      fixed
       floating
     >
-      <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
+   <v-list shaped>
+      <v-list-item-group v-model="item" color="black">
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+        >
+          <v-list-item-icon>
+            <v-icon v-text="item.icon" small></v-icon>
+          </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title v-text="item.text" class="caption"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+      </v-list-item-group>
+    </v-list>
     </v-navigation-drawer>
 
     <v-app-bar
      app
      clipped-left
+     color="#212121"
+     dark
+     dense
+
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
        <v-toolbar-title class="font-weight-bold">
         <span class="error--text">RW</span>
-        <span class="orange--text">ZONE</span>
+        <span class="orange--text">Zone .</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-            <template v-if="$vuetify.breakpoint.smAndUp">
-               <v-divider class="mx-4" vertical></v-divider>
+       <v-text-field
+        dense
+        rounded
+        solo
+        hide-details
+        color="grey"
+        prepend-inner-icon="search"
+      ></v-text-field>
+      <v-spacer></v-spacer>
+      <v-btn icon tile><v-icon small>mdi-settings</v-icon></v-btn>
 
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn color="primary" text v-on="on">
-              <v-avatar size="35">
-                <v-icon dark>face</v-icon>
-              </v-avatar>
-              <span class="ml-2 black--text">{{ $store.state.user }}</span>
-              <v-icon class="ml-2">mdi-arrow-down-bold</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-        <v-list-item><v-icon class="mr-2">settings</v-icon>profile</v-list-item>
-        <v-list-item><v-icon class="mr-2">mdi-location-exit</v-icon>exit</v-list-item>
-        </v-list>
-        </v-menu>
-      </template>
+      <v-btn icon tile><v-icon small>mdi-mail</v-icon></v-btn>
+      <v-btn icon tile><v-icon small>mdi-calendar</v-icon></v-btn>
+      <v-avatar color="red" size="36">
+      <span class="white--text caption">WK</span>
+        </v-avatar>
     </v-app-bar>
   </div>
 </template>
@@ -70,6 +69,12 @@
     },
     data: () => ({
       drawer: null,
+      item: 1,
+      items: [
+        { text: 'Real-Time', icon: 'mdi-clock' },
+        { text: 'Audience', icon: 'mdi-account' },
+        { text: 'Conversions', icon: 'mdi-flag' },
+      ],
     }),
   }
 </script>
